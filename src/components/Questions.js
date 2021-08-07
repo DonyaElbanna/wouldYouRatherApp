@@ -20,11 +20,9 @@ class Questions extends Component {
         const {questions} = this.props
         return (
             <div>
-                <ul>
                     {questions.map((id) => (
-                        <li key={id}>{questions.optionOne}</li>
+                        <div key={id}>{questions.optionOne}</div>
                     ))}
-                </ul>
             </div>
         );
     }

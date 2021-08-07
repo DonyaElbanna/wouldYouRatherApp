@@ -13,13 +13,11 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <ul>
                     {this.props.questionIds.map((id) => (
-                        <li key={id}>
+                        <div key={id}>
                             <Question id={id}/>
-                        </li>
+                        </div>
                     ))}
-                </ul>
             </div>
         );
     }
