@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
 import { HashRouter } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore(reducer, middleware)
 

@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { handleInitialData } from '../actions/shared'
 import { removeAuthedUser } from '../actions/authedUser'
 import Auth from './Auth'
  import Home from './Home'
-import Nav from './Nav'
+import Navig from './Navig'
 import Addq from './Addq'
 import Leaderboard from './Leaderboard'
-import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function mapStateToProps({authedUser}) {
@@ -33,7 +33,7 @@ class App extends Component {
             ? <Auth />
             : <div>
                     <Fragment>
-                <Nav/>
+                <Navig/>
                 <div>
                 
                     <Route path='/home'  component={Home} />
