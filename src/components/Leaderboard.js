@@ -8,7 +8,7 @@ class Leaderboard extends Component {
         <Card style={{ width: "30rem" }} className="m-auto">
           <Card.Header
             className="text-center"
-            style={{ fontSize: "20px", fontWeight: "bold" }}
+            style={{ fontSize: "18px", fontWeight: "bold" }}
           >
             Leaderboard
           </Card.Header>
@@ -27,9 +27,13 @@ class Leaderboard extends Component {
               </Badge>
               User1
               <span style={{ display: "flex" }}>
-                <Button variant="outline-dark" style={{ marginLeft: "auto" }}>
+                <Button variant="outline-dark" style={{ marginLeft: "auto", fontWeight: "bold" }}>
                   Score
                 </Button>
+              </span>
+              <span style={{ display: "flex" }}>
+              <p className='text-muted' style={{ fontSize:'10px', marginLeft: "auto", marginTop: '2px' }}>
+                  Click for details</p>
               </span>
             </ListGroup.Item>
             <ListGroup.Item style={{ marginTop: "10px" }}>
@@ -46,9 +50,13 @@ class Leaderboard extends Component {
               </Badge>
               User2
               <span style={{ display: "flex" }}>
-                <Button variant="outline-dark" style={{ marginLeft: "auto" }}>
+                <Button variant="outline-dark" style={{ marginLeft: "auto", fontWeight: "bold" }}>
                   Score
                 </Button>
+              </span>
+              <span style={{ display: "flex" }}>
+              <p className='text-muted' style={{ fontSize:'10px', marginLeft: "auto", marginTop: '2px' }}>
+                  Click for details</p>
               </span>
             </ListGroup.Item>
             <ListGroup.Item style={{ marginTop: "10px" }}>
@@ -65,9 +73,13 @@ class Leaderboard extends Component {
               </Badge>
               User2
               <span style={{ display: "flex" }}>
-                <Button variant="outline-dark" style={{ marginLeft: "auto" }}>
+                <Button variant="outline-dark" style={{ marginLeft: "auto", fontWeight: "bold" }}>
                   Score
                 </Button>
+              </span>
+              <span style={{ display: "flex" }}>
+              <p className='text-muted' style={{ fontSize:'10px', marginLeft: "auto", marginTop: '2px' }}>
+                  Click for details</p>
               </span>
             </ListGroup.Item>
           </ListGroup>

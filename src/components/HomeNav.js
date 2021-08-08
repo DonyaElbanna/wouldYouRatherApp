@@ -7,14 +7,14 @@ class HomeNav extends Component {
       <Nav
         justify
         variant="tabs"
-        defaultActiveKey="#Unq"
+        defaultActiveKey="#Unansqs"
         style={{ marginTop: "10px", fontSize: "20px" }}
       >
         <Nav.Item>
-          <Nav.Link href="#Unq">Unanswered Polls</Nav.Link>
+          <Nav.Link href="#Unansqs">Unanswered Polls</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#Aq">Answered Polls</Nav.Link>{" "}
+          <Nav.Link href="#Ansqs">Answered Polls</Nav.Link>
         </Nav.Item>
       </Nav>
     );

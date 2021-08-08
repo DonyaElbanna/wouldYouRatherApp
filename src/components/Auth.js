@@ -68,6 +68,7 @@ class Auth extends Component {
                     label="Select a user..."
                   >
                     <Form.Select ref={(id) => (this.authedUser = id)}>
+                      <option></option>
                       {users.map((user) => (
                         <option key={user.id}>{user.name}</option>
                       ))}
