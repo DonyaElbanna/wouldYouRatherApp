@@ -11,6 +11,7 @@ import Leaderboard from "./Leaderboard";
 import AnsQs from './AnsQs'
 import UnansQs from './UnansQs'
 import "bootstrap/dist/css/bootstrap.min.css";
+import LoadingBar from 'react-redux-loading'
 
 function mapStateToProps({ authedUser, users }) {
   return {
@@ -32,6 +33,7 @@ class App extends Component {
     const { authedUser, loading } = this.props;
     return (
       <div>
+        <LoadingBar />
         {loading === true ? null : (
           <div>
             {!authedUser ? (

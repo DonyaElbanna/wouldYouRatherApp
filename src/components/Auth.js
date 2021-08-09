@@ -30,15 +30,16 @@ class Auth extends Component {
     if (authedUser) {
       this.props.dispatch(setAuthedUser(authedUser));
     } else {
-      alert("Please sign in first");
+      alert("Please select a user first");
     }
   };
 
   render() {
     const { users } = this.props;
-    console.log("Auth Dataaaaa: ", this.props);
+    console.log("Auth Data: ", this.props);
 
     return (
+      <div style={{ marginTop: "5px"}}>
       <Container fluid className="text-center m-auto">
         <Card className="m-auto" style={{ width: "100%", height: "100vh" }}>
           <Card.Title style={{ marginTop: "40px", marginBottom: "20px" }}>
@@ -85,6 +86,7 @@ class Auth extends Component {
           </Card.Body>
         </Card>
       </Container>
+      </div>
     );
   }
 }

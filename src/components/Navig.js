@@ -25,7 +25,7 @@ class Navig extends Component {
 
   render() {
     const { authedUser } = this.props;
-    console.log("Nav Dataaaa: ", this.props);
+    console.log("Nav Data: ", this.props);
 
     return (
       <Navbar bg="primary" variant="dark">

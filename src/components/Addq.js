@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
+import { handleAddQuestion } from '../actions/questions'
 import { Card, Button, Form } from "react-bootstrap";
 
 class Addq extends Component {
@@ -26,10 +28,11 @@ class Addq extends Component {
     e.preventDefault()
 
     const { optionOne, optionTwo } = this.state
+    const { dispatch } = this.props
 
-    //Add poll to store
-
-    console.log('New Poll: ', [optionOne, optionTwo])
+     console.log('The poll is: ', this.state)
+    //dispatch(handleAddQuestion(optionOne, optionTwo))
+    
 
     //resetting input fields after submitting
     this.setState(() => ({
@@ -85,4 +88,4 @@ class Addq extends Component {
   }
 }
 
-export default Addq;
+export default connect()(Addq);
