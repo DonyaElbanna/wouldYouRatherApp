@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
-// import Container from 'react-bootstrap/Container'
-// import Card from 'react-bootstrap/Card'
-// import Button from 'react-bootstrap/Button'
-// import Form from 'react-bootstrap/Form'
+
 import {
   Container,
   Card,
@@ -71,7 +68,7 @@ class Auth extends Component {
                     <Form.Select ref={(id) => (this.authedUser = id)}>
                       <option></option>
                       {users.map((user) => (
-                        <option key={user.id}>{user.name}</option>
+                        <option value={user.id} key={user.id}>{user.name}</option>
                       ))}
                     </Form.Select>
                   </FloatingLabel>

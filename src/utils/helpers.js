@@ -16,7 +16,7 @@ export function formatDate (timestamp) {
 
     return {
       id,
-      name: name,
+      name,
       timestamp,
       avatar: avatarURL,
       author,

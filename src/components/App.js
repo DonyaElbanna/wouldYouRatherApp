@@ -43,9 +43,11 @@ class App extends Component {
                 <Fragment>
                   <Navig />
                   <div>
+                    {/* <AnsQs/>
+                    <UnansQs/> */}
                     <Route path="/home" component={Home} />
                     <Route path="/add" component={Addq} />
-                    <Route path="/leaderboard" component={Leaderboard} />
+                    <Route path="/leaderboard" component={Leaderboard} /> 
                     <Route path="/Ansqs" component={AnsQs} />
                     <Route path="/Unansqs" component={UnansQs} />
                   </div>
