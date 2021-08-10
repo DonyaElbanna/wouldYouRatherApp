@@ -31,7 +31,7 @@ class Addq extends Component {
     const { dispatch } = this.props
 
      console.log('The poll is: ', this.state)
-    //dispatch(handleAddQuestion(optionOne, optionTwo))
+    dispatch(handleAddQuestion(optionOne, optionTwo))
     
 
     //resetting input fields after submitting
