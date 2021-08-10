@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-//import { NavLink } from 'react-router-dom'
 import { removeAuthedUser } from "../actions/authedUser";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    authedUser,
+    name: users[authedUser].name,
+    avatar: users[authedUser].avatarURL
   };
 }
 
@@ -16,33 +16,33 @@ class Navig extends Component {
   logOut = () => {
     const { dispatch } = this.props;
     dispatch(removeAuthedUser());
-
-    // this.props.history.push({
-    //   pathname: '/',
-    //   state: { from: '/home' },
-    // });
   };
 
   render() {
-    const { authedUser } = this.props;
-    console.log("Nav Data: ", this.props);
+    const { name, avatar } = this.props;
+    console.log("Nav Data: ", name);
 
     return (
       <Navbar bg="primary" variant="dark">
         <Container>
-          <Navbar.Brand href="#home" style={{ fontSize: "25px" }}>
-            {`Hi, ${authedUser}!`}
+          <Navbar.Brand href="#home" style={{ fontSize: "30px" }}>
+          <Image src={avatar} style={{ width: "60px", height: "60px", marginRight: "10px" }} roundedCircle />
+            {`Hi, ${name}!`}
           </Navbar.Brand>
-          <Nav style={{ fontSize: "20px" }} defaultActiveKey="#home">
+          <Nav style={{ fontSize: "25px" }} defaultActiveKey="#home">
             <Nav.Link href="#home" style={{ marginRight: "50px" }}>
               Home
             </Nav.Link>
             <Nav.Link href="#add" style={{ marginRight: "50px" }}>
               Add a Poll
             </Nav.Link>
-            <Nav.Link href="#leaderboard">Leaderboard</Nav.Link>
+            <Nav.Link href="#leaderboard" style={{ marginRight: "100px" }}>
+              Leaderboard
+            </Nav.Link>
           </Nav>
-          <Button onClick={this.logOut}>Logout</Button>
+          <Button onClick={this.logOut} style={{ fontSize: "18px" }}>
+            Logout
+          </Button>
         </Container>
       </Navbar>
     );

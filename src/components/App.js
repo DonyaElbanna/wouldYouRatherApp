@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
-// import { removeAuthedUser } from "../actions/authedUser";
 import Auth from "./Auth";
 import Home from "./Home";
 import Navig from "./Navig";
