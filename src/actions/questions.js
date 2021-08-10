@@ -1,8 +1,9 @@
-import { saveQuestion } from '../utils/api'
+import { saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
+export const ADD_ANSWER = 'ADD_ANSWER'
 
 //action creators
 export function getQuestions (questions) {
@@ -16,6 +17,15 @@ function addQuestion (question) {
     return {
         type: ADD_QUESTION,
         question
+    }
+}
+
+function addAnswer (authedUser, qid, answer) {
+    return {
+        type: ADD_ANSWER,
+        authedUser,
+        qid,
+        answer
     }
 }
 
@@ -33,5 +43,18 @@ export function handleAddQuestion (optionOne, optionTwo) {
         })
         .then ((question) => dispatch(addQuestion(question)))
         .then (() => dispatch(hideLoading()));
+    }
+}
+
+export function handleAddAnswer (info) {
+    return (dispatch) => {
+        dispatch(addAnswer(info))
+
+        return saveQuestionAnswer (info)
+            .catch((e) => {
+                console.warn('Error in handlingAddingAnswer: ', e)
+                dispatch(addAnswer(info))
+                alert('There was an error submitting your answer, please try again.')
+            })
     }
 }

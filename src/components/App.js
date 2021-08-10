@@ -9,6 +9,7 @@ import Addq from "./Addq";
 import Leaderboard from "./Leaderboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingBar from 'react-redux-loading'
+import Vote from './Vote'
 
 function mapStateToProps({ authedUser, users }) {
   return {
@@ -39,6 +40,7 @@ class App extends Component {
                     <Route path="/home" component={Home} />
                     <Route path="/add" component={Addq} />
                     <Route path="/leaderboard" component={Leaderboard} />
+                    <Route path="/questions/:id" component={Vote}/>
                   </div>
                 </Fragment>
               </div>

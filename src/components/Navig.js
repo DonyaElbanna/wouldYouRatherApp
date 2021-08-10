@@ -20,7 +20,7 @@ class Navig extends Component {
 
   render() {
     const { name, avatar } = this.props;
-    console.log("Nav Data: ", name);
+    // console.log("Nav Data: ", this.props);
 
     return (
       <Navbar bg="primary" variant="dark">

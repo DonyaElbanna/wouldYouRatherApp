@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question'
+import Unansweredq from './Unansweredq';
 import {Tabs, Tab} from "react-bootstrap";
-//import UnansQs from './UnansQs'
 
 
 function mapStateToProps({authedUser, questions}) {
@@ -31,7 +31,7 @@ class Home extends Component {
       
       console.log('unanswered: ', unansQs)
       console.log('answered: ', ansQs)
-      //console.log
+
       
         return (
           <Tabs fill
@@ -41,7 +41,7 @@ class Home extends Component {
             <Tab eventKey="home" title="Unanswered Polls">
               {unansQs.map((id) => (
                 <div key={id}>
-                  <Question id={id} />
+                  <Unansweredq id={id} />
                 </div>
               ))}
             </Tab>

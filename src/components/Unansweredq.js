@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  formatQuestion,
-  //formatDate
-} from "../utils/helpers";
+import {formatQuestion} from "../utils/helpers";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
@@ -15,15 +12,11 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
 }
 
 class Question extends Component {
-  state = {
-    showPoll: false,
-  };
 
   render() {
 
     const { question } = this.props;
-
-    // console.log("Answered questions: ", this.props); 
+    // console.log("Unanswered questions: ", this.props);
 
     const {
       //id,
@@ -32,11 +25,9 @@ class Question extends Component {
       avatar,
       optionOne,
       optionTwo,
-      votesOne,
-      votesTwo,
+    //   votesOne,
+    //   votesTwo,
     } = question;
-
-    const { showPoll } = this.state;
 
     return (
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
@@ -46,7 +37,7 @@ class Question extends Component {
           className="m-auto"
         >
           <Card.Body>
-            <Container fluid>
+            <Container>
               <Row className="align-items-center justify-content-md-center">
                 <Col md="auto">
                   <img
@@ -70,45 +61,19 @@ class Question extends Component {
                       fontWeight: "bold",
                       marginTop: "20px",
                       marginBottom: "10px",
-                    }}
-                    onClick={(e) => this.vote(e)}
-                  >
+                    }} >
                     {optionOne}
                   </Button>
                   <Card.Title>Or</Card.Title>
                   <Button
                     variant="outline-secondary"
-                    style={{ fontWeight: "bold", display: "block" }}
-                    onClick={(e) => this.vote(e)}
-                  >
+                    style={{ fontWeight: "bold", display: "block" }} >
                     {optionTwo}
                   </Button>
                 </Col>
-                <Row>
-                  <Col></Col>
-                  <Col>
-                    <Button
-                      variant="danger"
-                      style={{ marginTop: "20px", marginBottom: "10px" }}
-                      type="button"
-                      onClick={() => this.setState({ showPoll: !showPoll })}
-                    >
-                      {showPoll ? "Hide" : "Show"} Result
-                    </Button>
-                    {showPoll ? (
-                      <div>
-                        <div>
-                          <progress value={votesOne} max="5"></progress>
-                          <span>{` ${votesOne}`}</span>
-                        </div>
-                        <div>
-                          <progress value={votesTwo} max="5"></progress>
-                          <span>{` ${votesTwo}`}</span>
-                        </div>
-                      </div>
-                    ) : null}
-                  </Col>
-                </Row>
+                <Button href={`#questions/:${question.id}`} style={{marginTop: '35px'}}>
+                    Take Poll
+                </Button>
               </Row>
             </Container>
           </Card.Body>
