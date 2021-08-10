@@ -3,12 +3,6 @@ import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { Card, Button, Form } from "react-bootstrap";
 
-function mapStateToProps({ authedUser }) {
-  return {
-    authedUser
-  };
-}
-
 class Addq extends Component {
 
   state = {
@@ -34,13 +28,10 @@ class Addq extends Component {
     e.preventDefault()
 
     const { optionOne, optionTwo } = this.state
-    const { authedUser, dispatch } = this.props
+    const { dispatch } = this.props
 
-     console.log('Option one: ', optionOne)
-     console.log('Option two: ', optionTwo)
-     console.log('AUTHED_USER: ', authedUser)
-
-    dispatch(handleAddQuestion(optionOne, optionTwo, authedUser));
+     console.log('The poll is: ', this.state)
+    dispatch(handleAddQuestion(optionOne, optionTwo))
     
 
     //resetting input fields after submitting
@@ -97,4 +88,4 @@ class Addq extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Addq);
+export default connect()(Addq);

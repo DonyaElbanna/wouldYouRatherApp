@@ -2,14 +2,12 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
-import { removeAuthedUser } from "../actions/authedUser";
+// import { removeAuthedUser } from "../actions/authedUser";
 import Auth from "./Auth";
 import Home from "./Home";
 import Navig from "./Navig";
 import Addq from "./Addq";
 import Leaderboard from "./Leaderboard";
-import AnsQs from './AnsQs'
-import UnansQs from './UnansQs'
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingBar from 'react-redux-loading'
 
@@ -23,10 +21,6 @@ function mapStateToProps({ authedUser, users }) {
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
-  }
-
-  componentWillUnmount() {
-    this.props.dispatch(removeAuthedUser);
   }
 
   render() {
@@ -43,13 +37,9 @@ class App extends Component {
                 <Fragment>
                   <Navig />
                   <div>
-                    {/* <AnsQs/>
-                    <UnansQs/> */}
                     <Route path="/home" component={Home} />
                     <Route path="/add" component={Addq} />
-                    <Route path="/leaderboard" component={Leaderboard} /> 
-                    <Route path="/Ansqs" component={AnsQs} />
-                    <Route path="/Unansqs" component={UnansQs} />
+                    <Route path="/leaderboard" component={Leaderboard} />
                   </div>
                 </Fragment>
               </div>
