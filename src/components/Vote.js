@@ -14,20 +14,30 @@ function mapStateToProps ({ authedUser, questions, users}, {match}) {
 }
 
 
-
 class Vote extends Component {
+
+  state = { answer: null}
   
-  vote = (e) => {
+  handleChange = (e) => {
+    this.setState({answer: e.target.value})
+    console.log(this.state.answer)
+  }
+
+
+  handleSubmit = (e) => { // to handle form submit
     e.preventDefault();
 
-    const { dispatch, authedUser, question } = this.props
+    const { dispatch, authedUser, question } = this.props;
+    const { answer } = this.state;
+
 
     dispatch(handleAddAnswer({
-      authedUser,
-      qid: question.id,
-      answer: question.answer
-    }))
-    };
+          authedUser,
+          qid: question.id,
+          answer: answer
+        }))
+}
+
 
   render() {
     const { authedUser,  question} = this.props;
@@ -42,7 +52,7 @@ class Vote extends Component {
       //   votesTwo,
       } = question;
 
-      console.log('Vote  data: ', question)
+      console.log('Vote  data: ', authedUser)
     
     return (
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
@@ -70,14 +80,18 @@ class Vote extends Component {
                   <Card.Title style={{ marginTop: "5px" }} className="mb-2">
                     Would your rather
                   </Card.Title>
-                  <Form style={{ marginTop: "40px" }}>
-                      <Form.Check type='radio' id='optionOne' 
-                                  label={optionOne} value='optionOne'
+                  <Form onSubmit={this.handleSubmit} style={{ marginTop: "40px" }}>
+                      <Form.Check onChange={this.handleChange} type='radio' 
+                      // id='optionOne' 
+                                  label={optionOne} 
+                                  value='optionOne'
                                   name='vote' style={{ marginTop: "40px" }}/>
-                      <Form.Check type='radio' id='optionTwo' 
-                                  label={optionTwo} value='optionTwo'
+                      <Form.Check onChange={this.handleChange} type='radio' 
+                      // id='optionTwo' 
+                                  label={optionTwo} 
+                                  value='optionTwo'
                                   name='vote' style={{ marginTop: "30px" }}/>
-                       <Button style={{ marginTop: "60px" }}>
+                       <Button type='submit'style={{ marginTop: "60px" }}>
                            Vote
                         </Button>
                   </Form>

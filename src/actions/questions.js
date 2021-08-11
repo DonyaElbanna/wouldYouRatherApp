@@ -20,7 +20,7 @@ function addQuestion (question) {
     }
 }
 
-function addAnswer (authedUser, qid, answer) {
+function addAnswer ({authedUser, qid, answer}) {
     return {
         type: ADD_ANSWER,
         authedUser,
