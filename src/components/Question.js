@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  formatQuestion,
-  //formatDate
-} from "../utils/helpers";
+import { formatQuestion } from "../utils/helpers";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {

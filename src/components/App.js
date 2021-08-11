@@ -40,7 +40,7 @@ class App extends Component {
                     <Route path="/home" component={Home} />
                     <Route path="/add" component={Addq} />
                     <Route path="/leaderboard" component={Leaderboard} />
-                    <Route path="/questions/:id" component={Vote}/>
+                    <Route path="/questions/:question_id" component={Vote}/>
                   </div>
                 </Fragment>
               </div>

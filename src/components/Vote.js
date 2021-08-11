@@ -2,15 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddAnswer } from '../actions/questions'
 import { Card, Button, Container, Row, Col, Form } from "react-bootstrap";
+import { formatQuestion } from "../utils/helpers";
 
-function mapStateToProps({ questions, users}) {
+function mapStateToProps ({ authedUser, questions, users}, {match}) {
+    const id = match.params.question_id;  
+    const question = questions[id]
     return {
-        questions :Object.values(questions) ,
-        users: Object.values(users)
-    };
-  }
+       authedUser,
+       question: formatQuestion(question, users[question.author], authedUser),
+    }
+}
 
-class Question extends Component {
+
+
+class Vote extends Component {
   
   vote = (e) => {
     e.preventDefault();
@@ -25,9 +30,19 @@ class Question extends Component {
     };
 
   render() {
-      const { questions, users } = this.props
-      console.log('Vote questions data: ', questions)
-      console.log('Vote users data: ', users)
+    const { authedUser,  question} = this.props;
+    const {
+        id,
+        name,
+        //timestamp,
+        avatar,
+        optionOne,
+        optionTwo,
+      //   votesOne,
+      //   votesTwo,
+      } = question;
+
+      console.log('Vote  data: ', question)
     
     return (
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
@@ -41,14 +56,14 @@ class Question extends Component {
               <Row className="align-items-center justify-content-md-center">
                 <Col md="auto">
                   <img
-                    src=""
-                    alt="avatar"
+                    src={avatar}
+                    alt={`Avatar of ${name}`}
                     width="90"
                     height="90"
                     style={{ marginTop: "20px", marginBottom: "20px" }}
                   />
                   <Card.Subtitle className="mb-2 text-muted">
-                    user is asking:
+                    {name} is asking:
                   </Card.Subtitle>
                 </Col>
                 <Col md={{ span: 6, offset: 2 }}>
@@ -57,10 +72,10 @@ class Question extends Component {
                   </Card.Title>
                   <Form style={{ marginTop: "40px" }}>
                       <Form.Check type='radio' id='optionOne' 
-                                  label='1' value='optionOne'
+                                  label={optionOne} value='optionOne'
                                   name='vote' style={{ marginTop: "40px" }}/>
                       <Form.Check type='radio' id='optionTwo' 
-                                  label='2' value='optionTwo'
+                                  label={optionTwo} value='optionTwo'
                                   name='vote' style={{ marginTop: "30px" }}/>
                        <Button style={{ marginTop: "60px" }}>
                            Vote
@@ -76,4 +91,4 @@ class Question extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Question);
+export default connect(mapStateToProps)(Vote);

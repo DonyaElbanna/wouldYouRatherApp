@@ -6,20 +6,21 @@ import { Card, Button, Container, Row, Col } from "react-bootstrap";
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
   return {
+    id,
     authedUser,
     question: formatQuestion(question, users[question.author], authedUser),
   };
 }
 
-class Question extends Component {
+class Unansweredq extends Component {
 
   render() {
 
     const { question } = this.props;
-    // console.log("Unanswered questions: ", this.props);
+    console.log("Unanswered questions: ", this.props);
 
     const {
-      //id,
+      id,
       name,
       //timestamp,
       avatar,
@@ -71,7 +72,7 @@ class Question extends Component {
                     {optionTwo}
                   </Button>
                 </Col>
-                <Button href={`#questions/:${question.id}`} style={{marginTop: '35px'}}>
+                <Button href={`#questions/${id}`} style={{marginTop: '35px'}}>
                     Take Poll
                 </Button>
               </Row>
@@ -83,4 +84,4 @@ class Question extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Question);
+export default connect(mapStateToProps)(Unansweredq);
