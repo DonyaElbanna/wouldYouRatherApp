@@ -22,7 +22,7 @@ class Question extends Component {
     // console.log("Answered questions: ", this.props);
 
     const {
-      //id,
+      id,
       name,
       //timestamp,
       avatar,
@@ -111,7 +111,7 @@ class Question extends Component {
                               your choice
                             </Badge>
                           ) : null}
-                          <ProgressBar
+                          <ProgressBar striped 
                             style={{ height: "20px" }}
                             variant="success"
                             now={votesOne}
@@ -126,7 +126,7 @@ class Question extends Component {
                               your choice
                             </Badge>
                           ) : null}
-                          <ProgressBar
+                          <ProgressBar striped 
                             style={{ height: "20px" }}
                             variant="success"
                             now={votesTwo}
@@ -136,6 +136,12 @@ class Question extends Component {
                         </div>
                       </div>
                     ) : null}
+                    <Button
+                    href={`#questions/${id}`}
+                    style={{ marginTop: "35px" }}
+                  >
+                    Show Details
+                  </Button>
                   </Col>
                 </Row>
               </Row>
