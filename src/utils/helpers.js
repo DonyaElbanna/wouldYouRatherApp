@@ -5,6 +5,8 @@
     const optionTwo = question.optionTwo.text
     const votesOne = question.optionOne.votes.length
     const votesTwo = question.optionTwo.votes.length
+    const userVoteOne = question.optionOne.votes
+    const userVoteTwo = question.optionTwo.votes
     const totalVotes = votesOne + votesTwo
 
     return {
@@ -17,6 +19,8 @@
       optionTwo,
       votesOne,
       votesTwo,
+      userVoteOne,
+      userVoteTwo,
       totalVotes
       }
     }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {formatQuestion} from "../utils/helpers";
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { formatQuestion } from "../utils/helpers";
+import { Card, Button, Row, Col } from "react-bootstrap";
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
@@ -13,11 +13,9 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
 }
 
 class Unansweredq extends Component {
-
   render() {
-
     const { question } = this.props;
-    console.log("Unanswered questions: ", this.props);
+    // console.log("Unanswered questions: ", this.props);
 
     const {
       id,
@@ -25,9 +23,7 @@ class Unansweredq extends Component {
       //timestamp,
       avatar,
       optionOne,
-      optionTwo,
-    //   votesOne,
-    //   votesTwo,
+      optionTwo
     } = question;
 
     return (
@@ -38,7 +34,6 @@ class Unansweredq extends Component {
           className="m-auto"
         >
           <Card.Body>
-            <Container>
               <Row className="align-items-center justify-content-md-center">
                 <Col md="auto">
                   <img
@@ -57,26 +52,40 @@ class Unansweredq extends Component {
                     Would your rather
                   </Card.Title>
                   <Button
-                    variant="outline-secondary"
+                    variant="outline-dark"
+                    disabled
                     style={{
                       fontWeight: "bold",
                       marginTop: "20px",
                       marginBottom: "10px",
-                    }} >
+                    }}
+                  >
                     {optionOne}
                   </Button>
                   <Card.Title>Or</Card.Title>
                   <Button
-                    variant="outline-secondary"
-                    style={{ fontWeight: "bold", display: "block" }} >
+                    variant="outline-dark"
+                    disabled
+                    style={{ fontWeight: "bold", display: "block" }}
+                  >
                     {optionTwo}
                   </Button>
                 </Col>
-                <Button href={`#questions/${id}`} style={{marginTop: '35px'}}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    href={`#questions/${id}`}
+                    style={{ marginTop: "35px" }}
+                  >
                     Take Poll
-                </Button>
+                  </Button>
+                </div>
               </Row>
-            </Container>
           </Card.Body>
         </Card>
       </div>

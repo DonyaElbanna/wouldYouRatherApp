@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { removeAuthedUser } from "../actions/authedUser";
-import { Navbar, Nav, Image } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
+import { Navbar, Nav, Image, Button, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
 function mapStateToProps({ authedUser, users }) {

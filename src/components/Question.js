@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col, ProgressBar, Badge } from "react-bootstrap";
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
@@ -17,10 +17,9 @@ class Question extends Component {
   };
 
   render() {
+    const { authedUser, question } = this.props;
 
-    const { question } = this.props;
-
-    // console.log("Answered questions: ", this.props); 
+    // console.log("Answered questions: ", this.props);
 
     const {
       //id,
@@ -31,19 +30,29 @@ class Question extends Component {
       optionTwo,
       votesOne,
       votesTwo,
+      userVoteOne,
+      userVoteTwo
     } = question;
 
     const { showPoll } = this.state;
 
+    let userVote = ''
+    if(userVoteOne.includes(authedUser)) {
+      userVote='optionOne'
+    } else if (userVoteTwo.includes(authedUser)) {
+      userVote = 'optionTwo'
+    }
+
+    // console.log('USER VOTE: ', userVote)
+
     return (
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
         <Card
-          style={{ width: "40rem", height: "20rem" }}
+          style={{ width: "42rem"}}
           border="primary"
           className="m-auto"
         >
           <Card.Body>
-            <Container fluid>
               <Row className="align-items-center justify-content-md-center">
                 <Col md="auto">
                   <img
@@ -62,28 +71,27 @@ class Question extends Component {
                     Would your rather
                   </Card.Title>
                   <Button
-                    variant="outline-secondary"
+                    variant="outline-dark"
+                    disabled
                     style={{
                       fontWeight: "bold",
                       marginTop: "20px",
                       marginBottom: "10px",
                     }}
-                    onClick={(e) => this.vote(e)}
                   >
                     {optionOne}
                   </Button>
                   <Card.Title>Or</Card.Title>
                   <Button
-                    variant="outline-secondary"
+                    variant="outline-dark"
+                    disabled
                     style={{ fontWeight: "bold", display: "block" }}
-                    onClick={(e) => this.vote(e)}
                   >
                     {optionTwo}
                   </Button>
                 </Col>
-                <Row>
-                  <Col></Col>
-                  <Col>
+                <Row style={{ marginTop: "20px" }}>
+                  <Col md="auto">
                     <Button
                       variant="danger"
                       style={{ marginTop: "20px", marginBottom: "10px" }}
@@ -92,22 +100,45 @@ class Question extends Component {
                     >
                       {showPoll ? "Hide" : "Show"} Result
                     </Button>
+                  </Col>
+                  <Col>
                     {showPoll ? (
-                      <div>
-                        <div>
-                          <progress value={votesOne} max="5"></progress>
-                          <span>{` ${votesOne}`}</span>
+                      <div style={{ marginLeft: "30px" }}>
+                        <div style={{ fontSize: "20px" }}>
+                          {optionOne}
+                          {userVote === "optionOne" ? (
+                            <Badge pill bg="warning" style={{ marginLeft: "20px" }}>
+                              your choice
+                            </Badge>
+                          ) : null}
+                          <ProgressBar
+                            style={{ height: "20px" }}
+                            variant="success"
+                            now={votesOne}
+                            label={votesOne}
+                            max="5"
+                          ></ProgressBar>
                         </div>
-                        <div>
-                          <progress value={votesTwo} max="5"></progress>
-                          <span>{` ${votesTwo}`}</span>
+                        <div style={{ fontSize: "20px", marginTop: "10px" }}>
+                          {optionTwo}
+                          {userVote === "optionTwo" ? (
+                            <Badge pill bg="warning" style={{ marginLeft: "20px" }}>
+                              your choice
+                            </Badge>
+                          ) : null}
+                          <ProgressBar
+                            style={{ height: "20px" }}
+                            variant="success"
+                            now={votesTwo}
+                            label={votesTwo}
+                            max="5"
+                          ></ProgressBar>
                         </div>
                       </div>
                     ) : null}
                   </Col>
                 </Row>
               </Row>
-            </Container>
           </Card.Body>
         </Card>
       </div>

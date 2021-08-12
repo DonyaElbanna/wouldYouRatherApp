@@ -35,17 +35,17 @@ class Home extends Component {
       
         return (
           <Tabs fill
-            defaultActiveKey="home"
+            defaultActiveKey="unanswered"
             style={{ marginTop: "5px", fontSize: "20px" }}
           >
-            <Tab eventKey="home" title="Unanswered Polls">
+            <Tab eventKey="unanswered" title="Unanswered Polls">
               {unansQs.map((id) => (
                 <div key={id}>
                   <Unansweredq id={id} />
                 </div>
               ))}
             </Tab>
-            <Tab eventKey="profile" title="Answered Polls">
+            <Tab eventKey="answered" title="Answered Polls">
               {ansQs.map((id) => (
                 <div key={id}>
                   <Question id={id} />
