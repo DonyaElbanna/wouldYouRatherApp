@@ -29,7 +29,7 @@ class Unansweredq extends Component {
     return (
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
         <Card
-          style={{ width: "40rem", height: "20rem" }}
+          style={{ width: "40rem" }}
           border="primary"
           className="m-auto"
         >

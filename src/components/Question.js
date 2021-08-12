@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { Card, Button, Row, Col, ProgressBar, Badge } from "react-bootstrap";
+import { Card, Button, Row, Col } from "react-bootstrap";
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
@@ -12,12 +12,10 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
 }
 
 class Question extends Component {
-  state = {
-    showPoll: false,
-  };
 
   render() {
-    const { authedUser, question } = this.props;
+    const { //authedUser, 
+      question } = this.props;
 
     // console.log("Answered questions: ", this.props);
 
@@ -28,27 +26,25 @@ class Question extends Component {
       avatar,
       optionOne,
       optionTwo,
-      votesOne,
-      votesTwo,
-      userVoteOne,
-      userVoteTwo
+      // votesOne,
+      // votesTwo,
+      // userVoteOne,
+      // userVoteTwo
     } = question;
 
-    const { showPoll } = this.state;
-
-    let userVote = ''
-    if(userVoteOne.includes(authedUser)) {
-      userVote='optionOne'
-    } else if (userVoteTwo.includes(authedUser)) {
-      userVote = 'optionTwo'
-    }
+    // let userVote = ''
+    // if(userVoteOne.includes(authedUser)) {
+    //   userVote='optionOne'
+    // } else if (userVoteTwo.includes(authedUser)) {
+    //   userVote = 'optionTwo'
+    // }
 
     // console.log('USER VOTE: ', userVote)
 
     return (
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
         <Card
-          style={{ width: "42rem"}}
+          style={{ width: "40rem"}}
           border="primary"
           className="m-auto"
         >
@@ -90,60 +86,21 @@ class Question extends Component {
                     {optionTwo}
                   </Button>
                 </Col>
-                <Row style={{ marginTop: "20px" }}>
-                  <Col md="auto">
-                    <Button
-                      variant="danger"
-                      style={{ marginTop: "20px", marginBottom: "10px" }}
-                      type="button"
-                      onClick={() => this.setState({ showPoll: !showPoll })}
-                    >
-                      {showPoll ? "Hide" : "Show"} Result
-                    </Button>
-                  </Col>
-                  <Col>
-                    {showPoll ? (
-                      <div style={{ marginLeft: "30px" }}>
-                        <div style={{ fontSize: "20px" }}>
-                          {optionOne}
-                          {userVote === "optionOne" ? (
-                            <Badge pill bg="warning" style={{ marginLeft: "20px" }}>
-                              your choice
-                            </Badge>
-                          ) : null}
-                          <ProgressBar striped 
-                            style={{ height: "20px" }}
-                            variant="success"
-                            now={votesOne}
-                            label={votesOne}
-                            max="5"
-                          ></ProgressBar>
-                        </div>
-                        <div style={{ fontSize: "20px", marginTop: "10px" }}>
-                          {optionTwo}
-                          {userVote === "optionTwo" ? (
-                            <Badge pill bg="warning" style={{ marginLeft: "20px" }}>
-                              your choice
-                            </Badge>
-                          ) : null}
-                          <ProgressBar striped 
-                            style={{ height: "20px" }}
-                            variant="success"
-                            now={votesTwo}
-                            label={votesTwo}
-                            max="5"
-                          ></ProgressBar>
-                        </div>
-                      </div>
-                    ) : null}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                     <Button
                     href={`#questions/${id}`}
+                    variant="danger"
                     style={{ marginTop: "35px" }}
                   >
                     Show Details
                   </Button>
-                  </Col>
-                </Row>
+                  </div>
               </Row>
           </Card.Body>
         </Card>
