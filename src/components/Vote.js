@@ -92,7 +92,7 @@ class Vote extends Component {
                   {name} is asking:
                 </Card.Subtitle>
               </Col>
-              <Col style={{marginLeft: '40px'}}>
+              <Col style={{marginLeft: '20px'}}>
                 <Card.Title style={{ marginTop: "5px", fontSize: "25px" }} className="mb-2">
                   Would your rather
                 </Card.Title>
@@ -127,11 +127,11 @@ class Vote extends Component {
                 </Form>
                   </div>
                   : <div>
-                        <div style={{ fontSize: "20px", fontWeight: 'bold', border: '2px solid blue', borderRadius: '5px', marginTop: '20px', height: '90px', paddingLeft: '10px', backgroundColor: userVote === 'optionOne' ? "#fcdf5b" : "white" }}>
+                        <div style={{ fontSize: "20px", fontWeight: 'bold', border: '2px solid blue', borderRadius: '5px', marginTop: '20px', paddingLeft: '5px', backgroundColor: userVote === 'optionOne' ? "#fcdf5b" : "white" }}>
                           {optionOne}
                           {userVote === "optionOne" ? (
-                            <Badge pill bg="success" style={{ marginLeft: "60px" }}>
-                              your choice
+                            <Badge pill bg="success" style={{ marginLeft: "10px" }}>
+                              Your Choice
                             </Badge>
                           ) : null}
                           <ProgressBar striped 
@@ -145,11 +145,11 @@ class Vote extends Component {
                     display: "flex",
                     justifyContent: "center"}}>{votesOne} out of {totalVotes}</span>
                         </div>
-                        <div style={{ fontSize: "20px",fontWeight: 'bold', border: '2px solid blue', borderRadius: '5px', marginTop: "15px", height: '90px', paddingLeft: '10px', backgroundColor: userVote === 'optionTwo' ? "#fcdf5b" : "white" }}>
+                        <div style={{ fontSize: "20px",fontWeight: 'bold', border: '2px solid blue', borderRadius: '5px', marginTop: "15px", paddingLeft: '5px', backgroundColor: userVote === 'optionTwo' ? "#fcdf5b" : "white" }}>
                           {optionTwo}
                           {userVote === "optionTwo" ? (
-                            <Badge pill bg="success" style={{ marginLeft: "60px" }}>
-                              your choice
+                            <Badge pill bg="success" style={{ marginLeft: "10px" }}>
+                              Your Choice
                             </Badge>
                           ) : null}
                           <ProgressBar striped 
