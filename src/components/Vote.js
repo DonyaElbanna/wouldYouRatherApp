@@ -1,59 +1,56 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleAddAnswer } from '../actions/questions'
+import { handleAddAnswer } from "../actions/questions";
 import { Card, Button, Container, Row, Col, Form } from "react-bootstrap";
 import { formatQuestion } from "../utils/helpers";
 
-function mapStateToProps ({ authedUser, questions, users}, {match}) {
-    const id = match.params.question_id;  
-    const question = questions[id]
-    return {
-       authedUser,
-       question: formatQuestion(question, users[question.author], authedUser),
-    }
+function mapStateToProps({ authedUser, questions, users }, { match }) {
+  const id = match.params.question_id;
+  const question = questions[id];
+  return {
+    authedUser,
+    question: formatQuestion(question, users[question.author], authedUser),
+  };
 }
 
-
 class Vote extends Component {
+  state = { answer: null };
 
-  state = { answer: null}
-  
   handleChange = (e) => {
-    this.setState({answer: e.target.value})
-    console.log(this.state.answer)
-  }
+    this.setState({ answer: e.target.value });
+    console.log(this.state.answer);
+  };
 
-
-  handleSubmit = (e) => { // to handle form submit
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const { dispatch, authedUser, question } = this.props;
     const { answer } = this.state;
 
-
-    dispatch(handleAddAnswer({
-          authedUser,
-          qid: question.id,
-          answer: answer
-        }))
-}
-
+    dispatch(
+      handleAddAnswer({
+        authedUser,
+        qid: question.id,
+        answer: answer,
+      })
+    );
+  };
 
   render() {
-    const { authedUser,  question} = this.props;
+    const { authedUser, question } = this.props;
     const {
-        id,
-        name,
-        //timestamp,
-        avatar,
-        optionOne,
-        optionTwo,
+      //id,
+      name,
+      //timestamp,
+      avatar,
+      optionOne,
+      optionTwo,
       //   votesOne,
       //   votesTwo,
-      } = question;
+    } = question;
 
-      console.log('Vote  data: ', authedUser)
-    
+    //console.log("Vote  data: ", this.props);
+
     return (
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
         <Card
@@ -80,20 +77,31 @@ class Vote extends Component {
                   <Card.Title style={{ marginTop: "5px" }} className="mb-2">
                     Would your rather
                   </Card.Title>
-                  <Form onSubmit={this.handleSubmit} style={{ marginTop: "40px" }}>
-                      <Form.Check onChange={this.handleChange} type='radio' 
-                      // id='optionOne' 
-                                  label={optionOne} 
-                                  value='optionOne'
-                                  name='vote' style={{ marginTop: "40px" }}/>
-                      <Form.Check onChange={this.handleChange} type='radio' 
-                      // id='optionTwo' 
-                                  label={optionTwo} 
-                                  value='optionTwo'
-                                  name='vote' style={{ marginTop: "30px" }}/>
-                       <Button type='submit'style={{ marginTop: "60px" }}>
-                           Vote
-                        </Button>
+                  <Form
+                    onSubmit={this.handleSubmit}
+                    style={{ marginTop: "40px" }}
+                  >
+                    <Form.Check
+                      onChange={this.handleChange}
+                      type="radio"
+                      // id='optionOne'
+                      label={optionOne}
+                      value="optionOne"
+                      name="vote"
+                      style={{ marginTop: "40px" }}
+                    />
+                    <Form.Check
+                      onChange={this.handleChange}
+                      type="radio"
+                      // id='optionTwo'
+                      label={optionTwo}
+                      value="optionTwo"
+                      name="vote"
+                      style={{ marginTop: "30px" }}
+                    />
+                    <Button type="submit" style={{ marginTop: "60px" }}>
+                      Vote
+                    </Button>
                   </Form>
                 </Col>
               </Row>

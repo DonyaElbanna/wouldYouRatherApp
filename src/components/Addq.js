@@ -1,52 +1,51 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux'
-import { handleAddQuestion } from '../actions/questions'
+import { connect } from "react-redux";
+import { handleAddQuestion } from "../actions/questions";
 import { Card, Button, Form } from "react-bootstrap";
 
 class Addq extends Component {
-
   state = {
-    optionOne: '',
-    optionTwo: ''
-  }
+    optionOne: "",
+    optionTwo: "",
+  };
 
   changeOptionOne = (e) => {
-    const optionOne = e.target.value
+    const optionOne = e.target.value;
     this.setState(() => ({
-      optionOne
-    }))
-  }
+      optionOne,
+    }));
+  };
 
   changeOptionTwo = (e) => {
-    const optionTwo = e.target.value
+    const optionTwo = e.target.value;
     this.setState(() => ({
-      optionTwo
-    }))
-  }
+      optionTwo,
+    }));
+  };
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const { optionOne, optionTwo } = this.state
-    const { dispatch } = this.props
+    const { optionOne, optionTwo } = this.state;
+    const { dispatch } = this.props;
 
-     console.log('The poll is: ', this.state)
-    dispatch(handleAddQuestion(optionOne, optionTwo))
-    
+    console.log("The poll is: ", this.state);
+    dispatch(handleAddQuestion(optionOne, optionTwo));
 
     //resetting input fields after submitting
     this.setState(() => ({
-      optionOne: '',
-      optionTwo: ''
-    }))
-  }
+      optionOne: "",
+      optionTwo: "",
+    }));
+  };
 
   render() {
+    const { optionOne, optionTwo } = this.state;
 
-    const { optionOne, optionTwo } = this.state
-    
     return (
       <div style={{ marginTop: "30px" }}>
+        {" "}
+        {this.checkAuth}
         <Card className="m-auto" style={{ width: "30rem" }}>
           <Card.Header
             className="text-center"
@@ -60,13 +59,19 @@ class Addq extends Component {
             </Card.Text>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group className="mb-3" controlId="optionOne">
-                <Form.Control placeholder="Option One"
-                value={optionOne} onChange={this.changeOptionOne} />
+                <Form.Control
+                  placeholder="Option One"
+                  value={optionOne}
+                  onChange={this.changeOptionOne}
+                />
               </Form.Group>
               <Card.Text>Or</Card.Text>
               <Form.Group className="mb-3" controlId="optionTwo">
-                <Form.Control placeholder="Option Two"
-                value={optionTwo} onChange={this.changeOptionTwo} />
+                <Form.Control
+                  placeholder="Option Two"
+                  value={optionTwo}
+                  onChange={this.changeOptionTwo}
+                />
               </Form.Group>
               <div
                 style={{
@@ -75,9 +80,29 @@ class Addq extends Component {
                   alignItems: "center",
                 }}
               >
-                <Button variant="primary" type="submit" 
-                disabled={optionOne === '' || optionTwo === ''}>
+                <Button
+                  variant="primary"
+                  type="submit"
+                  disabled={optionOne === "" || optionTwo === ""}
+                >
                   Submit
+                </Button>
+              </div>
+              <footer
+                className="blockquote-footer"
+                style={{ marginTop: "18px" }}
+              >
+                To view your newly created poll, go to the home page.
+              </footer>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Button href="#home" variant="danger">
+                  Go Home
                 </Button>
               </div>
             </Form>

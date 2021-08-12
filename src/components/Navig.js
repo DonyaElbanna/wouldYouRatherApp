@@ -4,11 +4,12 @@ import { removeAuthedUser } from "../actions/authedUser";
 import { Navbar, Nav, Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import { withRouter } from "react-router-dom";
 
 function mapStateToProps({ authedUser, users }) {
   return {
     name: users[authedUser].name,
-    avatar: users[authedUser].avatarURL
+    avatar: users[authedUser].avatarURL,
   };
 }
 
@@ -16,6 +17,7 @@ class Navig extends Component {
   logOut = () => {
     const { dispatch } = this.props;
     dispatch(removeAuthedUser());
+    this.props.history.push("/");
   };
 
   render() {
@@ -23,10 +25,14 @@ class Navig extends Component {
     // console.log("Nav Data: ", this.props);
 
     return (
-      <Navbar bg="primary" variant="dark">
+      <Navbar bg="primary" variant="dark" style={{ marginTop: "5px" }}>
         <Container>
           <Navbar.Brand href="#home" style={{ fontSize: "30px" }}>
-          <Image src={avatar} style={{ width: "60px", height: "60px", marginRight: "10px" }} roundedCircle />
+            <Image
+              src={avatar}
+              style={{ width: "60px", height: "60px", marginRight: "10px" }}
+              roundedCircle
+            />
             {`Hi, ${name}!`}
           </Navbar.Brand>
           <Nav style={{ fontSize: "25px" }} defaultActiveKey="#home">
@@ -49,4 +55,4 @@ class Navig extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Navig);
+export default connect(mapStateToProps)(withRouter(Navig));
