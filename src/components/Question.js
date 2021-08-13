@@ -12,96 +12,70 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
 }
 
 class Question extends Component {
-
   render() {
-    const { //authedUser, 
-      question } = this.props;
+    const { question } = this.props;
 
     // console.log("Answered questions: ", this.props);
 
-    const {
-      id,
-      name,
-      //timestamp,
-      avatar,
-      optionOne,
-      optionTwo,
-      // votesOne,
-      // votesTwo,
-      // userVoteOne,
-      // userVoteTwo
-    } = question;
-
-    // let userVote = ''
-    // if(userVoteOne.includes(authedUser)) {
-    //   userVote='optionOne'
-    // } else if (userVoteTwo.includes(authedUser)) {
-    //   userVote = 'optionTwo'
-    // }
-
-    // console.log('USER VOTE: ', userVote)
+    const { id, name, avatar, optionOne, optionTwo } = question;
 
     return (
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-        <Card
-          style={{ width: "40rem"}}
-          border="primary"
-          className="m-auto"
-        >
+        <Card style={{ width: "40rem" }} border="primary" className="m-auto">
           <Card.Body>
-              <Row className="align-items-center justify-content-md-center">
-                <Col md="auto">
-                  <img
-                    src={avatar}
-                    alt={`Avatar of ${name}`}
-                    width="90"
-                    height="90"
-                    style={{ marginTop: "50px", marginBottom: "20px" }}
-                  />
-                  <Card.Subtitle className="mb-2 text-muted">
-                    {name} is asking:
-                  </Card.Subtitle>
-                </Col>
-                <Col md={{ span: 6, offset: 2 }}>
-                  <Card.Title style={{ marginTop: "5px" }} className="mb-2">
-                    Would your rather
-                  </Card.Title>
-                  <Button
-                    variant="outline-dark"
-                    disabled
-                    style={{
-                      fontWeight: "bold",
-                      marginTop: "20px",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    {optionOne}
-                  </Button>
-                  <Card.Title>Or</Card.Title>
-                  <Button
-                    variant="outline-dark"
-                    disabled
-                    style={{ fontWeight: "bold", display: "block" }}
-                  >
-                    {optionTwo}
-                  </Button>
-                </Col>
-                <div
+            <Row className="align-items-center justify-content-md-center">
+              <Col md="auto">
+                <img
+                  src={avatar}
+                  alt={`Avatar of ${name}`}
+                  width="90"
+                  height="90"
+                  style={{ marginTop: "50px", marginBottom: "20px" }}
+                />
+                <Card.Subtitle className="mb-2 text-muted">
+                  {name} is asking:
+                </Card.Subtitle>
+              </Col>
+              <Col md={{ span: 6, offset: 2 }}>
+                <Card.Title style={{ marginTop: "5px" }} className="mb-2">
+                  Would your rather
+                </Card.Title>
+                <Button
+                  variant="outline-dark"
+                  disabled
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    fontWeight: "bold",
+                    marginTop: "20px",
+                    marginBottom: "10px",
                   }}
                 >
-                    <Button
-                    href={`#questions/${id}`}
-                    variant="danger"
-                    style={{ marginTop: "35px" }}
-                  >
-                    Show Poll
-                  </Button>
-                  </div>
-              </Row>
+                  {optionOne}
+                </Button>
+                <Card.Title>Or</Card.Title>
+                <Button
+                  variant="outline-dark"
+                  disabled
+                  style={{ fontWeight: "bold", display: "block" }}
+                >
+                  {optionTwo}
+                </Button>
+              </Col>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Button
+                  href={`#questions/${id}`}
+                  variant="danger"
+                  style={{ marginTop: "35px" }}
+                >
+                  Show Poll
+                </Button>
+              </div>
+            </Row>
           </Card.Body>
         </Card>
       </div>

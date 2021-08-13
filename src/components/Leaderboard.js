@@ -17,8 +17,8 @@ function mapStateToProps({ authedUser, users }) {
       name: user.name,
       avatar: user.avatarURL,
       numberAsked: user.questions.length,
-      numberAnswered: Object.values(user.answers).length,
-      score: user.questions.length + Object.values(user.answers).length,
+      numberAnswered: Object.keys(user.answers).length,
+      score: user.questions.length + Object.keys(user.answers).length,
     }))
     .sort((a, b) => b.score - a.score);
   return {
@@ -32,8 +32,8 @@ class Leaderboard extends Component {
 
   render() {
     const { authedUser, usersList } = this.props;
-    console.log("Leaderboard Data: ", this.props);
-    console.log("AUTHED USER ID: ", authedUser);
+    // console.log("Leaderboard Data: ", this.props);
+
     const { showDetails } = this.state;
 
     return (

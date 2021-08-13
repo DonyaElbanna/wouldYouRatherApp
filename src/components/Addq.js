@@ -23,13 +23,13 @@ class Addq extends Component {
     }));
   };
 
-  handleSubmit = (e) => {
+  submitPoll = (e) => {
     e.preventDefault();
 
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props;
 
-    console.log("The poll is: ", this.state);
+    //console.log("The poll is: ", this.state);
     dispatch(handleAddQuestion(optionOne, optionTwo));
 
     //resetting input fields after submitting
@@ -57,7 +57,7 @@ class Addq extends Component {
             <Card.Text style={{ marginTop: "30px" }}>
               Would you rather
             </Card.Text>
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.submitPoll}>
               <Form.Group className="mb-3" controlId="optionOne">
                 <Form.Control
                   placeholder="Option One"
@@ -81,7 +81,7 @@ class Addq extends Component {
                 }}
               >
                 <Button
-                  variant="primary"
+                  variant="danger"
                   type="submit"
                   disabled={optionOne === "" || optionTwo === ""}
                 >

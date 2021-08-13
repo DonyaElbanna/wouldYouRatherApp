@@ -118,6 +118,7 @@ class Vote extends Component {
                   />
                   <Button
                     type="submit"
+                    variant='danger'
                     style={{ marginTop: "60px" }}
                     disabled={answer === ""}
                     onClick={this.showResult}
@@ -130,13 +131,13 @@ class Vote extends Component {
                         <div style={{ fontSize: "20px", fontWeight: 'bold', border: '2px solid blue', borderRadius: '5px', marginTop: '20px', paddingLeft: '5px', backgroundColor: userVote === 'optionOne' ? "#fcdf5b" : "white" }}>
                           {optionOne}
                           {userVote === "optionOne" ? (
-                            <Badge pill bg="success" style={{ marginLeft: "10px" }}>
+                            <Badge pill bg="primary" style={{ marginLeft: "10px" }}>
                               Your Choice
                             </Badge>
                           ) : null}
                           <ProgressBar striped 
                             style={{ height: "20px", margin: '5px'}}
-                            variant="success"
+                            variant="primary"
                             now={votesOne}
                             label={`${voteOnePer}%`}
                             max={totalVotes}
@@ -148,13 +149,13 @@ class Vote extends Component {
                         <div style={{ fontSize: "20px",fontWeight: 'bold', border: '2px solid blue', borderRadius: '5px', marginTop: "15px", paddingLeft: '5px', backgroundColor: userVote === 'optionTwo' ? "#fcdf5b" : "white" }}>
                           {optionTwo}
                           {userVote === "optionTwo" ? (
-                            <Badge pill bg="success" style={{ marginLeft: "10px" }}>
+                            <Badge pill bg="primary" style={{ marginLeft: "10px" }}>
                               Your Choice
                             </Badge>
                           ) : null}
                           <ProgressBar striped 
                             style={{ height: "20px", margin: '5px' }}
-                            variant="success"
+                            variant="primary"
                             now={votesTwo}
                             label={`${voteTwoPer}%`}
                             max={totalVotes}
