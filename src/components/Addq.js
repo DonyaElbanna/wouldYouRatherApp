@@ -94,17 +94,6 @@ class Addq extends Component {
               >
                 To view your newly created poll, go to the home page.
               </footer>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Button href="#home" variant="danger">
-                  Go Home
-                </Button>
-              </div>
             </Form>
           </Card.Body>
         </Card>

@@ -14,8 +14,8 @@ export default function questions (state = {}, action) {
             }
         case ADD_ANSWER:
             return {
-              ...state,
-              [action.qid]: {
+              ...state,  //slice of the state
+              [action.qid]: {   //updating that slice of state
                 ...state[action.qid],
                 [action.answer]: {
                   ...state[action.qid][action.answer],

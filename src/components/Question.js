@@ -98,7 +98,7 @@ class Question extends Component {
                     variant="danger"
                     style={{ marginTop: "35px" }}
                   >
-                    Show Details
+                    Show Poll
                   </Button>
                   </div>
               </Row>

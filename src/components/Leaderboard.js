@@ -1,87 +1,208 @@
 import React, { Component } from "react";
-import { Card, ListGroup, Badge, Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import {
+  Card,
+  ListGroup,
+  Badge,
+  Image,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
+
+function mapStateToProps({ authedUser, users }) {
+  const usersList = Object.values(users)
+    .map((user) => ({
+      id: user.id,
+      name: user.name,
+      avatar: user.avatarURL,
+      numberAsked: user.questions.length,
+      numberAnswered: Object.values(user.answers).length,
+      score: user.questions.length + Object.values(user.answers).length,
+    }))
+    .sort((a, b) => b.score - a.score);
+  return {
+    authedUser,
+    usersList,
+  };
+}
 
 class Leaderboard extends Component {
+  state = { showDetails: false };
+
   render() {
+    const { authedUser, usersList } = this.props;
+    console.log("Leaderboard Data: ", this.props);
+    console.log("AUTHED USER ID: ", authedUser);
+    const { showDetails } = this.state;
+
     return (
       <div style={{ marginTop: "30px" }}>
         <Card style={{ width: "30rem" }} className="m-auto">
           <Card.Header
             className="text-center"
-            style={{ fontSize: "18px", fontWeight: "bold" }}
+            style={{ fontSize: "23px", fontWeight: "bold" }}
           >
-            Leaderboard
+            <Row
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Leaderboard
+            </Row>
+            <Row>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: '10px'
+                }}
+              >
+                <Button
+                  type="button"
+                  onClick={() => this.setState({ showDetails: !showDetails })}
+                >
+                  {showDetails ? "Hide" : "Show"} Detailed Scores
+                </Button>
+              </div>
+            </Row>
           </Card.Header>
           <ListGroup variant="flush">
-            <ListGroup.Item style={{ marginTop: "10px" }}>
-              <Badge
-                pill
-                bg="warning"
+            {usersList.map((user, index) => (
+              <ListGroup.Item
+                key={user.id}
                 style={{
-                  fontSize: "13px",
-                  fontWeight: "bold",
-                  marginRight: "10px",
+                  marginTop: "10px",
+                  backgroundColor: authedUser === user.id ? "#dae2e8" : null,
                 }}
               >
-                1st
-              </Badge>
-              User1
-              <span style={{ display: "flex" }}>
-                <Button variant="outline-dark" style={{ marginLeft: "auto", fontWeight: "bold" }}>
-                  Score
-                </Button>
-              </span>
-              <span style={{ display: "flex" }}>
-              <p className='text-muted' style={{ fontSize:'10px', marginLeft: "auto", marginTop: '2px' }}>
-                  Click for details</p>
-              </span>
-            </ListGroup.Item>
-            <ListGroup.Item style={{ marginTop: "10px" }}>
-              <Badge
-                pill
-                bg="secondary"
-                style={{
-                  fontSize: "13px",
-                  fontWeight: "bold",
-                  marginRight: "10px",
-                }}
-              >
-                2nd
-              </Badge>
-              User2
-              <span style={{ display: "flex" }}>
-                <Button variant="outline-dark" style={{ marginLeft: "auto", fontWeight: "bold" }}>
-                  Score
-                </Button>
-              </span>
-              <span style={{ display: "flex" }}>
-              <p className='text-muted' style={{ fontSize:'10px', marginLeft: "auto", marginTop: '2px' }}>
-                  Click for details</p>
-              </span>
-            </ListGroup.Item>
-            <ListGroup.Item style={{ marginTop: "10px" }}>
-              <Badge
-                pill
-                bg="danger"
-                style={{
-                  fontSize: "13px",
-                  fontWeight: "bold",
-                  marginRight: "10px",
-                }}
-              >
-                3rd
-              </Badge>
-              User2
-              <span style={{ display: "flex" }}>
-                <Button variant="outline-dark" style={{ marginLeft: "auto", fontWeight: "bold" }}>
-                  Score
-                </Button>
-              </span>
-              <span style={{ display: "flex" }}>
-              <p className='text-muted' style={{ fontSize:'10px', marginLeft: "auto", marginTop: '2px' }}>
-                  Click for details</p>
-              </span>
-            </ListGroup.Item>
+                {index === 0 ? (
+                  <Row>
+                    <Col>
+                      <Badge
+                        pill
+                        id="badge"
+                        bg="warning"
+                        style={{
+                          fontSize: "17px",
+                          fontWeight: "bold",
+                          marginRight: "10px",
+                          width: '53px',
+                        }}
+                      >
+                        1st
+                      </Badge>
+                    </Col>
+                  </Row>
+                ) : index === 1 ? (
+                  <Row>
+                    <Col>
+                      <Badge
+                        pill
+                        bg="secondary"
+                        style={{
+                          fontSize: "17px",
+                          fontWeight: "bold",
+                          marginRight: "10px",
+                        }}
+                      >
+                        2nd
+                      </Badge>
+                    </Col>
+                  </Row>
+                ) : index === 2 ? (
+                  <Row>
+                    <Col>
+                      <Badge
+                        pill
+                        bg="danger"
+                        style={{
+                          fontSize: "17px",
+                          fontWeight: "bold",
+                          marginRight: "10px",
+                        }}
+                      >
+                        3rd
+                      </Badge>
+                    </Col>
+                  </Row>
+                ) : null}
+
+                <Row>
+                  <div id="badge"></div>
+                  <Col md="auto">
+                    <Image
+                      rounded
+                      src={user.avatar}
+                      alt={`Avatar of ${user.name}`}
+                      width="90"
+                      height="90"
+                      style={{ marginBottom: "20px", marginLeft: "20px" }}
+                    />
+                  </Col>
+                  <Col></Col>
+                  <Col
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: "30px",
+                    }}
+                  >
+                    <Card
+                      style={{
+                        backgroundColor: "#b8c3d1",
+                        fontSize: "30px",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                      }}
+                    >
+                      <Card.Header style={{ fontSize: "25px" }}>
+                        Score
+                      </Card.Header>
+                      {user.score}
+                    </Card>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Card.Title style={{ marginLeft: "20px" }}>
+                      {user.name}
+                    </Card.Title>
+                  </Col>
+                  <Col md="auto"></Col>
+
+                  {showDetails ? (
+                    <div>
+                      <Card
+                        style={{
+                          backgroundColor: "#b8c3d1",
+                          marginTop: "10px",
+                        }}
+                      >
+                        <Card.Header
+                          className="text-center"
+                          style={{ fontSize: "17px", fontWeight: "bold" }}
+                        >
+                          Detailed Score
+                        </Card.Header>
+                        <Card.Title
+                          style={{ marginLeft: "5px", marginTop: "5px" }}
+                        >
+                          Polls Added: {user.numberAsked}
+                        </Card.Title>
+                        <Card.Title style={{ marginLeft: "5px" }}>
+                          Polls Taken: {user.numberAnswered}
+                        </Card.Title>
+                      </Card>
+                    </div>
+                  ) : null}
+                </Row>
+              </ListGroup.Item>
+            ))}
           </ListGroup>
         </Card>
       </div>
@@ -89,4 +210,4 @@ class Leaderboard extends Component {
   }
 }
 
-export default Leaderboard;
+export default connect(mapStateToProps)(Leaderboard);

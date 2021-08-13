@@ -7,7 +7,6 @@ import {Tabs, Tab} from "react-bootstrap";
 
 function mapStateToProps({authedUser, questions}) {
     return {
-      
       unansQs: Object.keys(questions)
         .filter(
           (q) =>
