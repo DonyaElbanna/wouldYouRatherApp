@@ -8,22 +8,21 @@ import Error from './Error'
 function mapStateToProps({ authedUser, questions, users }, { match }) {
   const id = match.params.question_id;
   const question = questions[id];
-
-  //const error = true;
-  // {question === undefined ?
-  // error === true
-  // : null}
+  let error = false;
 
   if (question === undefined) {
-    const error = true;
+    error = true;
     return {
       error
-    };
+    } 
+  } else {
+    error = false
   }
 
   return {
     authedUser,
-    question: formatQuestion(question, users[question.author], authedUser)
+    question: formatQuestion(question, users[question.author], authedUser),
+    error
   };
 }
 
@@ -53,19 +52,17 @@ class Vote extends Component {
 
   render() {
 
-    const { error } = this.props;
-    if (error) {
-      return (
-        <div>
-          <Error />
-        </div>
-      );
-    }
-
     const {
       authedUser,
-      question
+      question, 
+      error
     } = this.props;
+
+    if (error === true) {
+      return (
+          <Error />
+      );
+    }
 
     const {
       //id,

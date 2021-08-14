@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import Auth from "./Auth";
 import Home from "./Home";
@@ -36,7 +36,6 @@ class App extends Component {
             {!authedUser ? (
                 <Auth/>
             ) : (
-              <div>
                 <Fragment>
                 <Navig />
                   <Switch>
@@ -47,7 +46,6 @@ class App extends Component {
                     <Route component={Error}/>
                   </Switch>
                 </Fragment>
-              </div>
             )}
           </div>
         )}
@@ -57,7 +55,7 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(withRouter(App));
 //Using the connect() function upgrades a component to a container.
 //Containers can read state from the store and dispatch actions.
 

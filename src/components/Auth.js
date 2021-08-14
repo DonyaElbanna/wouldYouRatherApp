@@ -52,13 +52,13 @@ class Auth extends Component {
       <div style={{ marginTop: "5px" }}>
         <Container fluid className="text-center m-auto">
           <Card className="m-auto" style={{ height: "100vh" }}>
-            <Card.Title style={{ marginTop: "40px", marginBottom: "20px" }}>
+            <Card.Title style={{ marginTop: "20px", marginBottom: "20px" }}>
               Welcome to the game
             </Card.Title>
             <Card.Img
               variant="top"
               className="m-auto"
-              style={{ width: "18rem" }}
+              style={{ width: "24rem" }}
               src="/wydpic.png"
             />
             <Card.Body>
@@ -69,6 +69,7 @@ class Auth extends Component {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  marginTop: '30px'
                 }}>
                 <Col md='auto'>
                 <Dropdown>
@@ -83,7 +84,7 @@ class Auth extends Component {
                   ? <span>John Doe</span>
                   : null}
                 </Dropdown.Toggle>
-                <Dropdown.Menu >
+                <Dropdown.Menu  style={{overflowY: 'scroll', maxHeight:'140px'}}>
                   {users.map((user) => (
                     <Dropdown.Item
                       key={user.id}
