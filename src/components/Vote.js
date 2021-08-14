@@ -3,10 +3,24 @@ import { connect } from "react-redux";
 import { handleAddAnswer } from "../actions/questions";
 import { Card, Button, Row, Col, Form, Badge, ProgressBar} from "react-bootstrap";
 import { formatQuestion } from "../utils/helpers";
+import Error from './Error'
 
 function mapStateToProps({ authedUser, questions, users }, { match }) {
   const id = match.params.question_id;
   const question = questions[id];
+
+  //const error = true;
+  // {question === undefined ?
+  // error === true
+  // : null}
+
+  if (question === undefined) {
+    const error = true;
+    return {
+      error
+    };
+  }
+
   return {
     authedUser,
     question: formatQuestion(question, users[question.author], authedUser)
@@ -38,6 +52,16 @@ class Vote extends Component {
 
 
   render() {
+
+    const { error } = this.props;
+    if (error) {
+      return (
+        <div>
+          <Error />
+        </div>
+      );
+    }
+
     const {
       authedUser,
       question

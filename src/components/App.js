@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import Auth from "./Auth";
 import Home from "./Home";
@@ -10,6 +10,7 @@ import Leaderboard from "./Leaderboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingBar from 'react-redux-loading'
 import Vote from './Vote'
+import Error from './Error'
 
 function mapStateToProps({ authedUser, users }) {
   return {
@@ -26,28 +27,31 @@ class App extends Component {
   render() {
     const { authedUser, loading } = this.props;
     return (
-      <div>
+      <HashRouter>
+        <div>
         <LoadingBar />
         {loading === true ? null : (
           <div>
             {!authedUser ? (
-              <Auth />
+                <Auth/>
             ) : (
               <div>
                 <Fragment>
                   <Navig />
-                  <div>
+                  <Switch>
                     <Route path="/home" component={Home} />
                     <Route path="/add" component={Addq} />
                     <Route path="/leaderboard" component={Leaderboard} />
                     <Route path="/questions/:question_id" component={Vote}/>
-                  </div>
+                    <Route component={Error}/>
+                  </Switch>
                 </Fragment>
               </div>
             )}
           </div>
         )}
-      </div>
+        </div>
+      </HashRouter>
     );
   }
 }

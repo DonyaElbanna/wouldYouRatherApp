@@ -84,7 +84,6 @@ class Auth extends Component {
                   : null}
                 </Dropdown.Toggle>
                 <Dropdown.Menu >
-                  <Dropdown.Item></Dropdown.Item>
                   {users.map((user) => (
                     <Dropdown.Item
                       key={user.id}
