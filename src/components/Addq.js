@@ -44,8 +44,6 @@ class Addq extends Component {
 
     return (
       <div style={{ marginTop: "30px" }}>
-        {" "}
-        {this.checkAuth}
         <Card className="m-auto" style={{ width: "30rem" }}>
           <Card.Header
             className="text-center"

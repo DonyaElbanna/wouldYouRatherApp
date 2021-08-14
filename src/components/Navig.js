@@ -23,7 +23,7 @@ class Navig extends Component {
     // console.log("Nav Data: ", this.props);
 
     return (
-      <Navbar bg="primary" variant="dark" style={{ marginTop: "5px" }}>
+      <Navbar id='navig' bg="primary" variant="dark" style={{ marginTop: "5px" }}>
         <Container>
           <Navbar.Brand href="#home" style={{ fontSize: "30px" }}>
             <Image

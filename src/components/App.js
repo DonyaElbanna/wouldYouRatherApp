@@ -25,6 +25,7 @@ class App extends Component {
   }
 
   render() {
+
     const { authedUser, loading } = this.props;
     return (
       <HashRouter>
@@ -37,7 +38,7 @@ class App extends Component {
             ) : (
               <div>
                 <Fragment>
-                  <Navig />
+                <Navig />
                   <Switch>
                     <Route path="/home" component={Home} />
                     <Route path="/add" component={Addq} />
@@ -59,3 +60,4 @@ class App extends Component {
 export default connect(mapStateToProps)(App);
 //Using the connect() function upgrades a component to a container.
 //Containers can read state from the store and dispatch actions.
+

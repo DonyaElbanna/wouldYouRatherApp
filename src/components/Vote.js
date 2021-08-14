@@ -155,7 +155,7 @@ class Vote extends Component {
                         <div style={{ fontSize: "20px", fontWeight: 'bold', border: '2px solid blue', borderRadius: '5px', marginTop: '20px', paddingLeft: '5px', backgroundColor: userVote === 'optionOne' ? "#fcdf5b" : "white" }}>
                           {optionOne}
                           {userVote === "optionOne" ? (
-                            <Badge pill bg="primary" style={{ marginLeft: "10px" }}>
+                            <Badge pill bg="danger" style={{ marginLeft: "10px" }}>
                               Your Choice
                             </Badge>
                           ) : null}
@@ -173,7 +173,7 @@ class Vote extends Component {
                         <div style={{ fontSize: "20px",fontWeight: 'bold', border: '2px solid blue', borderRadius: '5px', marginTop: "15px", paddingLeft: '5px', backgroundColor: userVote === 'optionTwo' ? "#fcdf5b" : "white" }}>
                           {optionTwo}
                           {userVote === "optionTwo" ? (
-                            <Badge pill bg="primary" style={{ marginLeft: "10px" }}>
+                            <Badge pill bg="danger" style={{ marginLeft: "10px" }}>
                               Your Choice
                             </Badge>
                           ) : null}
