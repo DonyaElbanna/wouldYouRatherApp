@@ -15,7 +15,7 @@ class Navig extends Component {
   logOut = () => {
     const { dispatch } = this.props;
     dispatch(removeAuthedUser());
-    this.props.history.push("/login");
+    this.props.history.push("/");
   };
 
   render() {

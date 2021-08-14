@@ -11,6 +11,7 @@ import {
   Image
 } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import AuthNav from './AuthNav'
 
 function mapStateToProps({ users }) {
   return {
@@ -34,7 +35,7 @@ class Auth extends Component {
 
     if (selectedUser) {
       dispatch(setAuthedUser(selectedUser));
-      this.props.history.push("/home");
+      this.props.history.push("#");
     }
   };
 
@@ -50,15 +51,15 @@ class Auth extends Component {
 
     return (
       <div style={{ marginTop: "5px" }}>
+        <AuthNav/>
         <Container fluid className="text-center m-auto">
-          <Card className="m-auto" style={{ height: "100vh" }}>
-            <Card.Title style={{ marginTop: "20px", marginBottom: "20px" }}>
-              Welcome to the game
+          <Card className="m-auto" style={{ height: "90vh" }}>
+            <Card.Title style={{ marginTop: "20px" }}>
             </Card.Title>
             <Card.Img
               variant="top"
               className="m-auto"
-              style={{ width: "24rem" }}
+              style={{ width: "22rem" }}
               src="/wydpic.png"
             />
             <Card.Body>

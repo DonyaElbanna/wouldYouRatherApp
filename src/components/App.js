@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { HashRouter, Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import Auth from "./Auth";
 import Home from "./Home";
@@ -55,7 +55,7 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps)(withRouter(App));
+export default connect(mapStateToProps)(App);
 //Using the connect() function upgrades a component to a container.
 //Containers can read state from the store and dispatch actions.
 
