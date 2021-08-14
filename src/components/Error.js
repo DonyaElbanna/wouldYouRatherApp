@@ -31,7 +31,7 @@ class Error extends Component {
             alignItems: "center",
           }}
         >
-          <Button href="#home">Go Home</Button>
+          <Button href="/">Go Home</Button>
         </div>
       </div>
     );

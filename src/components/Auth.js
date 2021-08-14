@@ -35,7 +35,7 @@ class Auth extends Component {
 
     if (selectedUser) {
       dispatch(setAuthedUser(selectedUser));
-      this.props.history.push("#");
+      this.props.history.push("/home");
     }
   };
 

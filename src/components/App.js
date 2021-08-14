@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import Auth from "./Auth";
 import Home from "./Home";
@@ -28,7 +28,6 @@ class App extends Component {
 
     const { authedUser, loading } = this.props;
     return (
-      <HashRouter>
         <div>
         <LoadingBar />
         {loading === true ? null : (
@@ -50,7 +49,6 @@ class App extends Component {
           </div>
         )}
         </div>
-      </HashRouter>
     );
   }
 }
