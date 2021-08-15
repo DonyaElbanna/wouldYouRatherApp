@@ -21,6 +21,8 @@ class Navig extends Component {
   render() {
     const { name, avatar } = this.props;
     // console.log("Nav Data: ", this.props);
+    // console.log(this.props.history.location.pathname)
+    const location = this.props.history.location.pathname
 
     return (
       <Navbar id='navig' bg="primary" variant="dark" style={{ marginTop: "5px", height:'65px' }}>
@@ -32,7 +34,15 @@ class Navig extends Component {
             />
             {`Hi, ${name}!`}
           </Navbar.Brand>
-          <Nav className="text-center m-auto" style={{ fontSize: "25px" }} defaultActiveKey="#home">
+          <Nav className="text-center m-auto" style={{ fontSize: "25px" }} 
+          activeKey= {location === '/home' || location === '/'
+                     ? '#home'
+                     : location === '/add'
+                     ? '#add'
+                     : location === '/leaderboard'
+                     ? '#leaderboard'
+                     : '#home' }
+          >
             <Nav.Link href="#home" style={{ marginRight: "50px" }}>
               Home
             </Nav.Link>

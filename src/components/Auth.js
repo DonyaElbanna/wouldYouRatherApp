@@ -10,7 +10,7 @@ import {
   Dropdown,
   Image
 } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import AuthNav from './AuthNav'
 
 function mapStateToProps({ users }) {
@@ -32,10 +32,15 @@ class Auth extends Component {
 
     const {selectedUser} = this.state;
     const { dispatch } = this.props
+    const from  = this.props.history.location.pathname
 
     if (selectedUser) {
       dispatch(setAuthedUser(selectedUser));
-      this.props.history.push("/home");
+      if ( from === '/') {
+        this.props.history.push("/home");
+      }
+    } else if (from !== '/') {
+      return <Redirect to={from}/>
     }
   };
 

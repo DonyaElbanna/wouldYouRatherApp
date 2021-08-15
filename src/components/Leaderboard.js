@@ -62,6 +62,7 @@ class Leaderboard extends Component {
                 }}
               >
                 <Button
+                variant='secondary'
                   type="button"
                   onClick={() => this.setState({ showDetails: !showDetails })}
                 >
