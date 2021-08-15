@@ -23,7 +23,7 @@ class AuthNav extends Component {
 
     return (
         <Navbar id='navig' bg="primary" variant="dark" style={{ marginTop: "5px", height:'65px' }}>
-          <Navbar.Brand href="#home" style={{ fontSize: "30px", }}>
+          <Navbar.Brand style={{ fontSize: "30px", }}>
             <Image
               src="/wydpic.png"
               style={{ width: "100px", height: "60px", marginLeft: "40px", marginRight: '10px' }}
