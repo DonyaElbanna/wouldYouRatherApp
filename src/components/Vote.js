@@ -14,6 +14,7 @@ import {
 } from "react-bootstrap";
 import { formatQuestion } from "../utils/helpers";
 import Error from "./Error";
+import { NavLink } from 'react-router-dom'
 
 function mapStateToProps({ authedUser, questions, users }, { match }) {
   const id = match.params.question_id;
@@ -238,7 +239,10 @@ class Vote extends Component {
               delay={{ show: 250, hide: 400 }}
               overlay={renderTooltip}
             >
-              <Button href="#home">&#10094;</Button>
+              <Button
+               as={NavLink} to='/home'>
+                &#10094;
+              </Button>
             </OverlayTrigger>
           </Card.Body>
         </Card>

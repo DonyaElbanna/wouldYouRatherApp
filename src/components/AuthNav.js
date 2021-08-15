@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Navbar, Nav, Image } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
 function mapStateToProps({ authedUser }) {
   return {
@@ -32,19 +32,19 @@ class AuthNav extends Component {
           </Navbar.Brand>
           <Nav className="text-center m-auto" style={{ fontSize: "25px" }} 
                activeKey= {location === '/home' || location === '/'
-               ? '#home'
+               ? '/home'
                : location === '/add'
-               ? '#add'
+               ? '/add'
                : location === '/leaderboard'
-               ? '#leaderboard'
-               : '#home' }>
-            <Nav.Link href="#home" onSelect={this.redirect} style={{ marginRight: "50px" }}>
+               ? '/leaderboard'
+               : '/home' }>
+            <Nav.Link as={NavLink} to='/home' onClick={this.redirect} style={{ marginRight: "50px" }}>
               Home
             </Nav.Link>
-            <Nav.Link href="#add" onSelect={this.redirect} style={{ marginRight: "50px" }}>
+            <Nav.Link as={NavLink} to='/add' onClick={this.redirect} style={{ marginRight: "50px" }}>
               Add Poll
             </Nav.Link>
-            <Nav.Link href="#leaderboard" onSelect={this.redirect} style={{ marginRight: "50px" }}>
+            <Nav.Link as={NavLink} to='/leaderboard' onClick={this.redirect} style={{ marginRight: "50px" }}>
               Leaderboard
             </Nav.Link>
           </Nav>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
 import { Card, Button, Row, Col } from "react-bootstrap";
+import { NavLink } from 'react-router-dom'
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
@@ -68,7 +69,8 @@ class Unansweredq extends Component {
                 }}
               >
                 <Button
-                  href={`#questions/${id}`}
+                  as={NavLink}
+                  to={`/questions/${id}`}
                   style={{ marginTop: "35px" }}
                   variant="danger"
                 >

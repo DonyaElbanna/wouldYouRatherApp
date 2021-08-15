@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import { NavLink } from 'react-router-dom'
 
 class Error extends Component {
   componentDidMount() {
@@ -32,7 +33,9 @@ class Error extends Component {
             alignItems: "center",
           }}
         >
-          <Button href="/">Go Home</Button>
+          <Button as={NavLink} to="/home">
+            Go Home
+          </Button>
         </div>
       </div>
     );
