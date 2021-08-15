@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 
 class Error extends Component {
   componentDidMount() {
@@ -13,7 +13,7 @@ class Error extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div style={{ backgroundColor: "#f7faf8" }}>
         <img

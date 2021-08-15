@@ -18,6 +18,7 @@ class Unansweredq extends Component {
     const { question } = this.props;
     // console.log("Unanswered questions: ", this.props);
 
+    //destructuring
     const { id, name, avatar, optionOne, optionTwo } = question;
 
     return (

@@ -10,6 +10,7 @@ import {
   Col,
 } from "react-bootstrap";
 
+//getting users info and sorting them according to score
 function mapStateToProps({ authedUser, users }) {
   const usersList = Object.values(users)
     .map((user) => ({
@@ -28,6 +29,7 @@ function mapStateToProps({ authedUser, users }) {
 }
 
 class Leaderboard extends Component {
+  //to show detailed score(number of questions added and taken)
   state = { showDetails: false };
 
   render() {
@@ -58,11 +60,11 @@ class Leaderboard extends Component {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  marginTop: '10px'
+                  marginTop: "10px",
                 }}
               >
                 <Button
-                variant='secondary'
+                  variant="secondary"
                   type="button"
                   onClick={() => this.setState({ showDetails: !showDetails })}
                 >
@@ -91,7 +93,7 @@ class Leaderboard extends Component {
                           fontSize: "17px",
                           fontWeight: "bold",
                           marginRight: "10px",
-                          width: '53px',
+                          width: "53px",
                         }}
                       >
                         1st

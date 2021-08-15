@@ -4,11 +4,13 @@ import { handleAddQuestion } from "../actions/questions";
 import { Card, Button, Form } from "react-bootstrap";
 
 class Addq extends Component {
+  //state starting empty
   state = {
     optionOne: "",
     optionTwo: "",
   };
 
+  //updating options in the state
   changeOptionOne = (e) => {
     const optionOne = e.target.value;
     this.setState(() => ({
@@ -30,15 +32,11 @@ class Addq extends Component {
     const { dispatch } = this.props;
 
     //console.log("The poll is: ", this.state);
+
+    //adding the 2 options to the store
     dispatch(handleAddQuestion(optionOne, optionTwo));
     // alert('Your poll has been submitted!')
-    this.props.history.push('/home')
-
-    //resetting input fields after submitting
-    this.setState(() => ({
-      optionOne: "",
-      optionTwo: "",
-    }));
+    this.props.history.push("/home");
   };
 
   render() {
@@ -57,7 +55,7 @@ class Addq extends Component {
             <Card.Text style={{ marginTop: "30px" }}>
               Would you rather
             </Card.Text>
-            <Form >
+            <Form>
               <Form.Group className="mb-3" controlId="optionOne">
                 <Form.Control
                   placeholder="Option One"
@@ -97,3 +95,5 @@ class Addq extends Component {
 }
 
 export default connect()(Addq);
+//we used connect to get access to dispatch, we didn't pass any props as we don't need any
+//we just created a local state that only this comp will have access to

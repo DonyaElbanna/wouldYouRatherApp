@@ -4,6 +4,7 @@ import { formatQuestion } from "../utils/helpers";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
+//passing id as props in the 2nd argument
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
   return {
@@ -18,6 +19,7 @@ class Question extends Component {
 
     // console.log("Answered questions: ", this.props);
 
+    //destructuring
     const { id, name, avatar, optionOne, optionTwo } = question;
 
     return (

@@ -14,13 +14,14 @@ import {
 } from "react-bootstrap";
 import { formatQuestion } from "../utils/helpers";
 import Error from "./Error";
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 
 function mapStateToProps({ authedUser, questions, users }, { match }) {
-  const id = match.params.question_id;
+  const id = match.params.question_id; //to render the question id in the url
   const question = questions[id];
   const error = question === undefined;
 
+  //if user entered a wrong url, we catch the error in order not to break the code
   if (error) {
     return {
       error,
@@ -59,14 +60,14 @@ class Vote extends Component {
   render() {
     const { authedUser, question, error } = this.props;
 
+    //if user entered an non-existent url, redirect to error page
     if (error) {
       return <Error />;
     }
 
+    //destructuring
     const {
-      //id,
       name,
-      //timestamp,
       avatar,
       optionOne,
       optionTwo,
@@ -84,6 +85,8 @@ class Vote extends Component {
 
     //console.log("Vote data: ", this.props);
 
+    //checking the user vote to either return a poll details page and
+    //highlight the option selected or return the voting page
     let userVote = "";
     if (userVoteOne.includes(authedUser)) {
       userVote = "optionOne";
@@ -239,8 +242,7 @@ class Vote extends Component {
               delay={{ show: 250, hide: 400 }}
               overlay={renderTooltip}
             >
-              <Button
-               as={NavLink} to='/home'>
+              <Button as={NavLink} to="/home">
                 &#10094;
               </Button>
             </OverlayTrigger>

@@ -8,9 +8,9 @@ import Navig from "./Navig";
 import Addq from "./Addq";
 import Leaderboard from "./Leaderboard";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LoadingBar from 'react-redux-loading'
-import Vote from './Vote'
-import Error from './Error'
+import LoadingBar from "react-redux-loading";
+import Vote from "./Vote";
+import Error from "./Error";
 
 function mapStateToProps({ authedUser, users }) {
   return {
@@ -20,35 +20,35 @@ function mapStateToProps({ authedUser, users }) {
 }
 
 class App extends Component {
+  //when this comp mounts we dispatch handleInitiaData to get the data
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
 
   render() {
-
     const { authedUser, loading } = this.props;
     return (
-        <div>
+      <div>
         <LoadingBar />
         {loading === true ? null : (
           <div>
             {!authedUser ? (
-                <Auth/>
+              <Auth />
             ) : (
-                <Fragment>
+              <Fragment>
                 <Navig />
-                  <Switch>
-                    <Route path="/home" component={Home} />
-                    <Route path="/add" component={Addq} />
-                    <Route path="/leaderboard" component={Leaderboard} />
-                    <Route path="/questions/:question_id" component={Vote}/>
-                    <Route component={Error}/>
-                  </Switch>
-                </Fragment>
+                <Switch>
+                  <Route path="/home" component={Home} />
+                  <Route path="/add" component={Addq} />
+                  <Route path="/leaderboard" component={Leaderboard} />
+                  <Route path="/questions/:question_id" component={Vote} />
+                  <Route component={Error} />
+                </Switch>
+              </Fragment>
             )}
           </div>
         )}
-        </div>
+      </div>
     );
   }
 }
@@ -56,4 +56,3 @@ class App extends Component {
 export default connect(mapStateToProps)(App);
 //Using the connect() function upgrades a component to a container.
 //Containers can read state from the store and dispatch actions.
-
