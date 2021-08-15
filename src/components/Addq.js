@@ -31,7 +31,7 @@ class Addq extends Component {
 
     //console.log("The poll is: ", this.state);
     dispatch(handleAddQuestion(optionOne, optionTwo));
-    alert('Your poll has been submitted!')
+    // alert('Your poll has been submitted!')
     this.props.history.push('/home')
 
     //resetting input fields after submitting

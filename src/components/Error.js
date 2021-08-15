@@ -12,6 +12,7 @@ class Error extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div style={{ backgroundColor: "#f7faf8" }}>
         <img
