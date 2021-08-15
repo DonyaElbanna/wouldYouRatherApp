@@ -31,6 +31,8 @@ class Addq extends Component {
 
     //console.log("The poll is: ", this.state);
     dispatch(handleAddQuestion(optionOne, optionTwo));
+    alert('Your poll has been submitted!')
+    this.props.history.push('/home')
 
     //resetting input fields after submitting
     this.setState(() => ({
@@ -55,7 +57,7 @@ class Addq extends Component {
             <Card.Text style={{ marginTop: "30px" }}>
               Would you rather
             </Card.Text>
-            <Form onSubmit={this.submitPoll}>
+            <Form >
               <Form.Group className="mb-3" controlId="optionOne">
                 <Form.Control
                   placeholder="Option One"
@@ -80,28 +82,13 @@ class Addq extends Component {
               >
                 <Button
                   variant="danger"
-                  type="submit"
+                  onClick={this.submitPoll}
                   disabled={optionOne === "" || optionTwo === ""}
                 >
                   Submit
                 </Button>
               </div>
-              <footer
-                className="blockquote-footer"
-                style={{ marginTop: "18px" }}
-              >
-                To view your newly created poll, go to the home page.
-              </footer>
             </Form>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Button href="#home">Go Home</Button>
-            </div>
           </Card.Body>
         </Card>
       </div>

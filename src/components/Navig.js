@@ -47,7 +47,7 @@ class Navig extends Component {
               Home
             </Nav.Link>
             <Nav.Link href="#add" style={{ marginRight: "50px" }}>
-              Add a Poll
+              Add Poll
             </Nav.Link>
             <Nav.Link href="#leaderboard" style={{ marginRight: "50px" }}>
               Leaderboard

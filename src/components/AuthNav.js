@@ -42,7 +42,7 @@ class AuthNav extends Component {
               Home
             </Nav.Link>
             <Nav.Link href="#add" onSelect={this.redirect} style={{ marginRight: "50px" }}>
-              Add a Poll
+              Add Poll
             </Nav.Link>
             <Nav.Link href="#leaderboard" onSelect={this.redirect} style={{ marginRight: "50px" }}>
               Leaderboard
