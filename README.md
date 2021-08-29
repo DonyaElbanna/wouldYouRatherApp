@@ -1,14 +1,4 @@
-## Project Title
-
-Would you rather? game app
-
-
-## Table of Contents
-
-* [Overview]
-* [Prerequisites]
-* [Description]
-* [Acknowledgments]
+# Would you rather? game app
 
 ## Overview
 
@@ -18,9 +8,9 @@ This is a web app bootstrapped with Create React App and built with React and Re
 ## Prerequisites
 
 To get started: 
-- download or clone the repository.
-- run (npm install) to install project dependenacies.
-- run (npm start) to start the developmental server
+- Clone the repository by `git clone <repo>` or download the ZIP.
+- Run `npm install` to install project dependenacies.
+- Run `npm start` to start the developmental server.
 
 ## Description
 
@@ -45,6 +35,24 @@ The App is consisted of:
 - The user can navigate to the leaderboard to see the scores, and on clicking on the show detailed scores button, they can view the detailed scores of the number of polls added and taken for each user.
 
 - Any change in the url, will redirect the user back to the sign in page and then redirects them to the desired page. If the user enetered an unrecognized path in the url, again, they're taken to the sign in page to authenticate and then they're taken to an Error page where they can go back to the home page.
+
+## Demo
+
+#### Login Page
+![Login Page](demo/login.PNG)
+
+#### Home Page
+![Home Page](demo/home.PNG)
+
+#### Poll
+![Poll](demo/poll.PNG)
+
+#### Adding a Poll
+![Add Poll](demo/addPoll.PNG)
+
+#### Leaderboard Page
+![Leaderboard page](demo/leaderboard.PNG)
+
 
 ## Acknowledgments
 
