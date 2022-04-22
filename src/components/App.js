@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingBar from "react-redux-loading";
 import Vote from "./Vote";
 import Error from "./Error";
+import Skeleton from './Skeleton'
 
 function mapStateToProps({ authedUser, users }) {
   return {
@@ -20,17 +21,26 @@ function mapStateToProps({ authedUser, users }) {
 }
 
 class App extends Component {
+
+  state = { isLoading : true}  //set a loading state
+
   //when this comp mounts we dispatch handleInitiaData to get the data
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
-  }
+    setTimeout(() => {
+      this.props.dispatch(handleInitialData());
+      this.setState ({ isLoading : false})
+    },5000)
+    
+  } 
 
   render() {
     const { authedUser, loading } = this.props;
     return (
       <div>
-        <LoadingBar />
-        {loading === true ? null : (
+        {/* <LoadingBar /> */}
+        {this.state.isLoading === true 
+        ? <Skeleton/>   
+        : ( 
           <div>
             {!authedUser ? (
               <Auth />
